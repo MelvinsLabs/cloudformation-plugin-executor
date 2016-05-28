@@ -21,6 +21,7 @@
                 <artifactId>cloudformation-maven-plugin</artifactId>
                 <version>0.0.0.0</version>
                 <executions>
+                    <!-- Create Stack in CloudFormation -->
                     <execution>
                         <phase>compile</phase>
                         <goals>
@@ -30,9 +31,22 @@
                             <stackName>MyStackName</stackName>
                             <templateUrl>http://labs.melvins.me/dev</templateUrl>
                             <tags>
-                                <CC>123</CC>
+                                <Id>13</Id>
                                 <Owner>melvins@melvins.me</Owner>
                             </tags>
+                        </configuration>
+                    </execution>
+
+                    <!-- Update Lambda Code -->
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>UpdateLambdaCode</goal>
+                        </goals>
+                        <configuration>
+                            <functionName>MyLambdaFunctionName</functionName>
+                            <s3Bucket>my-s3-bucket</s3Bucket>
+                            <s3Key>my-s3-folder/my-s3-file</s3Key>
                         </configuration>
                     </execution>
                 </executions>
